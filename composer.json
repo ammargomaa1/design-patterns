@@ -1,0 +1,16 @@
+{
+    "name": "ammar/design-patterns",
+    "description": "This repository contains implementations of various design patterns in PHP. Each pattern is carefully crafted to demonstrate best practices and practical use cases in modern PHP development.",
+    "authors": [
+        {
+            "name": "ammar gomaa",
+            "email": "ammargomaa1@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+    "psr-4": {
+      "Patterns\\": "Patterns/"
+    }
+  }
+}
