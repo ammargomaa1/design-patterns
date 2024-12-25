@@ -55,5 +55,5 @@ cd path/to/pattern
 php index.php
 ```
 
-🤝 Contributing
+## 🤝 Contributing
 Feel free to contribute to this repository by adding new patterns or improving existing implementations!
