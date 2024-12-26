@@ -31,11 +31,11 @@ class OnlineMarketPlace
         $this->subscribers[EventType::NEW_OFFER->name] = [];
     }
 
-/**
- * @param EventType $eventType
- * @param Subscriber $subscriber
- * @return void
- */
+    /**
+     * @param EventType $eventType
+     * @param Subscriber $subscriber
+     * @return void
+     */
 
     public function subscribe(EventType $eventType, Subscriber $subscriber): void
     {
@@ -52,7 +52,6 @@ class OnlineMarketPlace
         $this->subscribers[$eventType->name] = array_filter($this->subscribers[$eventType->name], function ($sub) use ($subscriber) {
             return $sub->getName() !== $subscriber->getName();
         });
-
     }
 
     /**
@@ -63,7 +62,6 @@ class OnlineMarketPlace
     {
         $this->products[] = $product;
         $this->notifySubscribers(EventType::NEW_PRODUCT, "New product is added " . $product->getName());
-
     }
 
     /**
@@ -74,7 +72,6 @@ class OnlineMarketPlace
     {
         $this->offers[] = $offer;
         $this->notifySubscribers(EventType::NEW_OFFER, "New offer added " . $offer->getMessage());
-
     }
 
     public function addNewJobOpening(string $jobOpeningMessage): void
@@ -93,5 +90,4 @@ class OnlineMarketPlace
             $subscriber->notify($message);
         }
     }
-
 }
