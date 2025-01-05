@@ -2,10 +2,32 @@
 
 namespace Patterns\Behavioral\TemplateMethod;
 
-interface CVReportGeneration
+abstract class CVReportGeneration
 {
-    public function generateCVReport(string $cvFilePath): GeneratedReport;
-    public function readFile(string $filePath): string;
-    public function extractData(string $data): Data;
-    public function analyzeData(Data $data): AnalyzedData;
+    public function generateReport(string $cvFilePath): GeneratedReport{
+        $file = $this->readfile('some/path/to/file');
+        $extractedData = $this->extractData($file);
+        $analyzedData = $this->analyzeData($extractedData);
+        return $this->generateReportOf($analyzedData);
+    }
+
+    private function generateReportOf(AnalyzedData $analyzedData) :GeneratedReport{
+        var_dump ('generating report from ' , $analyzedData , PHP_EOL);
+        return new GeneratedReport(false);
+    }
+
+    private function readFile(string $filePath): string{
+        $string = 'reading File from ' . $filePath . PHP_EOL;
+
+        echo $string;
+
+        return $string;
+    }
+    private function analyzeData(Data $data): AnalyzedData{
+        var_dump ('analyzing data of ', $data , PHP_EOL);
+
+        return new AnalyzedData;
+    }
+
+    protected abstract function extractData(string $file): Data;
 }
